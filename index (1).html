@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mi Patrimonio</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="header">
+        <p class="badge">Finanzas personales</p>
+        <h1>Mi Patrimonio</h1>
+        <p class="subtitle">Usuario: Henry Osorio</p>
+        <p class="subtitle">Controla tu patrimonio y tus metas de ahorro en un solo lugar.</p>
+      </header>
+
+      <main class="content">
+        <section class="card highlight">
+          <div class="card-header">
+            <div>
+              <p class="label">Total general</p>
+              <h2 id="totalValue">$0</h2>
+            </div>
+          </div>
+        </section>
+
+        <section class="card highlight">
+          <div class="card-header">
+            <div>
+              <p class="label">Patrimonio actual</p>
+              <h2 id="patrimonioValue">$0</h2>
+            </div>
+            <button class="btn ghost" onclick="toggleEdit('patrimonioEdit')">Editar</button>
+          </div>
+
+          <div id="patrimonioEdit" class="edit-box hidden">
+            <input type="text" id="patrimonioInput" placeholder="Ingresa tu patrimonio" oninput="formatInput(this)" />
+            <button class="btn primary" onclick="savePatrimonio()">Guardar</button>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="card-header">
+            <div>
+              <p class="label">Fondos principales</p>
+              <h3>Editar tus 3 ahorros más importantes</h3>
+            </div>
+          </div>
+
+          <div class="savings-grid">
+            <div class="saving-item">
+              <p class="saving-title">Fondo de emergencia</p>
+              <div class="saving-row">
+                <span id="emergencyValue">$0</span>
+                <button class="btn small" onclick="toggleEdit('emergencyEdit')">Editar</button>
+              </div>
+              <div id="emergencyEdit" class="edit-box hidden">
+                <input type="text" id="emergencyInput" placeholder="Valor en pesos" oninput="formatInput(this)" />
+                <button class="btn primary" onclick="saveEmergency()">Guardar</button>
+              </div>
+            </div>
+
+            <div class="saving-item">
+              <p class="saving-title">Fondo de imprevistos</p>
+              <div class="saving-row">
+                <span id="unexpectedValue">$0</span>
+                <button class="btn small" onclick="toggleEdit('unexpectedEdit')">Editar</button>
+              </div>
+              <div id="unexpectedEdit" class="edit-box hidden">
+                <input type="text" id="unexpectedInput" placeholder="Valor en pesos" oninput="formatInput(this)" />
+                <button class="btn primary" onclick="saveUnexpected()">Guardar</button>
+              </div>
+            </div>
+
+            <div class="saving-item">
+              <p class="saving-title">Cuenta de inversión</p>
+              <div class="saving-row">
+                <span id="investmentValue">$0</span>
+                <button class="btn small" onclick="toggleEdit('investmentEdit')">Editar</button>
+              </div>
+              <div id="investmentEdit" class="edit-box hidden">
+                <input type="text" id="investmentInput" placeholder="Valor en pesos" oninput="formatInput(this)" />
+                <button class="btn primary" onclick="saveInvestment()">Guardar</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="card-header">
+            <div>
+              <p class="label">Metas de ahorro</p>
+              <h3>Crear nuevas metas</h3>
+            </div>
+          </div>
+
+          <div class="goal-form">
+            <input type="text" id="goalName" placeholder="Nombre de la meta" />
+            <input type="text" id="goalAmount" placeholder="Monto en pesos" oninput="formatInput(this)" />
+            <button class="btn primary full" onclick="addGoal()">Agregar meta</button>
+          </div>
+
+          <div id="goalsList" class="goals-list"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
